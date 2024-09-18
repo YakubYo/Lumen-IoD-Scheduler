@@ -1,0 +1,8 @@
+{
+    "sourceSystem": "NaaS ExternalApi",
+    "customerNumber": "{Customer Number}",
+    "currencyCode": "USD",
+    "masterSiteId": "{MasterSiteId}",
+    "productCode": "718",
+    "speed": "{Bandwidth}"
+}

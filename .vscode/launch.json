@@ -1,0 +1,12 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C#: Lumen-IoD-Scheduler",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}\\Lumen-IoD-Scheduler.csproj",
+            "launchConfigurationId": "TargetFramework=;Lumen-IoD-Scheduler"
+        }
+    ]
+}

@@ -1,0 +1,53 @@
+{
+    "externalId": "{ExternalId}",
+    "billingAccount": {
+        "id": "{AccountNumber}",
+        "name": "{AccountName}"
+    },
+    "channel": [
+        {
+            "id": "99",
+            "name": "NaaS ExternalApi"
+        }
+    ],
+    "note": [
+        {
+            "text": "{CalendarItemId}"
+        }
+    ],
+    "productOrderItem": [
+        {
+            "id": "{ServiceId}",
+            "quantity": 1,
+            "action": "modify",
+            "product": {
+                "id": "{ServiceId}",
+                "productCharacteristic": [],
+                "productSpecification": {
+                    "id": "5001",
+                    "name": "NaaS Internet"
+                }
+            },
+            "productOffering": {
+                "id": "718",
+                "name": "NaaS Internet"
+            }
+        }
+    ],
+    "quote": [
+        {
+            "id": "{QuoteId}",
+            "name": "quoteId"
+        }
+    ],
+    "relatedContactInformation": [
+        {
+            "number": "4255551212",
+            "emailAddress": "ENTER EMAIL ADDRESS HERE",
+            "role": "Order Contact",
+            "organization": "Org Name",
+            "name": "Lumen-IoD-Scheduler",
+            "numberExtension": ""
+        }
+    ]
+}
