@@ -1,19 +1,6 @@
 ﻿using Microsoft.Kiota.Abstractions.Extensions;
 using Serilog;
 
-using Azure.Core;
-using Azure.Identity;
-using Microsoft.Graph;
-using Microsoft.Graph.Models;
-// using Microsoft.Identity.Client;
-// using Microsoft.AspNetCore.Http;
-// using Microsoft.AspNetCore.Mvc;
-// using Microsoft.Extensions.Primitives;
-
-// using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
-
-
-
 // immediately grab current time as the beginning of our window
 // use a little trick to round down to eliminate seconds, milliseconds, nanoseconds
 // as we will be using this value to compare against calendar events later (which
@@ -101,53 +88,3 @@ catch (Exception ex)
 }
 
 Log.CloseAndFlush();
-
-
-// More todo:
-// auth via clientkey
-
-
-// BandwidthAction action = new BandwidthAction()
-//     {
-//     BandwidthValue = "1000 Mbps",
-//     ServiceId = "7786867426",
-//     // ServiceId = "7768192647",
-//     EventSubject = "test",
-//     CalEventId = "eventId val",
-//     Time = DateTime.Now.AddMinutes(3),
-//     Priority = 1
-//     };
-
-// settings.CustomerNumber = "2-BYXZXQ";
-// IoDConnection conn = new IoDConnection(action, settings);
-
-// conn.SetIoDBandwidth();
-// Console.WriteLine("Pause!!");
-
-
-// var tenantId = settings.TenantId;
-
-// // The client ID of the app registered in Microsoft Entra ID
-// var clientId = settings.ClientId;
-
-// // *Never* include client secrets in source code!
-// // var clientSecret = await GetClientSecretFromKeyVault(); // Or some other secure place.
-
-// // var clientSecret = await GetClientSecretFromKeyVault(); // Or some other secure place.
-// var clientSecret = "B-_8Q~9.uXIeI0agYPLkZIlZuK8bwPm~mMFwfcqq";
-
-// // Create an instance of a TokenCredential. Since we're using the Client Credentials
-// // flow with a client secret, we use ClientSecretCredential.
-// var clientSecretCredential = new ClientSecretCredential(tenantId, clientId, clientSecret);
-
-// // The app registration should be configured to require access to permissions
-// // sufficient for the Microsoft Graph API calls the app will be making, and
-// // those permissions should be granted by a tenant administrator.
-// // var scopes = new[] { "https://graph.microsoft.com/.default" };
-// var scopes = settings.GraphUserScopes;
-
-// // Build the Microsoft Graph client
-// GraphServiceClient graphServiceClient = new GraphServiceClient(clientSecretCredential, scopes);
-
-// // Make a Microsoft Graph API request
-// var users = await graphServiceClient.Users.GetAsync();
