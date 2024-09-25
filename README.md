@@ -14,7 +14,7 @@ Microsoft 365 license for work/school (Personal account can be used for testing)
 1. Microsoft 365 calendar created and permissioned to specified user(s)
 2. Registered application in <a href="https://portal.azure.com/">Azure</a> Entra ID to allow calendar access through Microsoft Graph APIs:
     1. Including client secret and Graph API permissions (Calendars.Read and User.Read.All)
-    2. To test with personal Outlook accounts in Visual Studio or VS Code:
+    2. To test with a personal Outlook account in Visual Studio or VS Code:
         1. configure the Entra ID app to enable device code flow
         2. Add <https://localhost> as the Redirect URI
         3. Set the tenantId in appsetting.json to "common"
@@ -30,6 +30,11 @@ Microsoft 365 license for work/school (Personal account can be used for testing)
 
 ### Microsoft 365 Calendar Id:
 One manner of finding your calendar Id value is by using <a href="https://developer.microsoft.com/en-us/graph/graph-explorer">Graph Explorer</a>, such as the via the <a href="https://learn.microsoft.com/en-us/graph/api/user-list-calendars">list calendars</a> call. There are other methods to get this Id that can be found with a quick web search.
+
+### Settings:
+Most settings are in the **appsettings.json** file. This includes the ability to change the time interval, set the regular expression pattern to match the calendar event subject line, the location of the output log file, as well as connection information for Graph APIs and Lumen APIs.  
+
+*In addition*, configuration information is in **IoD-Json/bandwidthUpdate.json**, specifically in the "relatedContactInformation" section at the bottom. *You should specify an emailAddress here in order to receive the status notification mail from Lumen once the bandwidth update action has processed.*
 
 ## Contact:
 For questions or feedback, please contact Jacob Johansen at <jakejoh@hotmail.com>. 
