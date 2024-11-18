@@ -127,9 +127,22 @@ class IoDConnection
         _action.AccountName = element.GetProperty("billingAccount").GetProperty("name").GetString();
         _action.MasterSiteId = element.GetProperty("location").GetProperty("masterSiteid").GetString();
 
+        // For a DC location, we need the DC PartnerId
         if (element.GetProperty("locationProfile").GetProperty("dataCenter").GetBoolean())
         {
             _action.PartnerId = element.GetProperty("locationProfile").GetProperty("relatedParty").GetProperty("id").GetString();
+        }
+        else
+        {
+            // For a UNI port, we need the UNI Service Id
+            foreach (var subElement in element.GetProperty("product").GetProperty("productCharacteristic").EnumerateArray())
+            {
+                if (0 == string.Compare(subElement.GetProperty("name").GetString(), "UNI Service ID"))
+                {
+                    _action.PortId = subElement.GetProperty("value").ToString();
+                    break;
+                }
+            }
         }
 
         return true;
@@ -143,15 +156,20 @@ class IoDConnection
 
         using (var reader = new StreamReader(_quoteJsonFile))
         {
-            body = reader.ReadToEnd();
-            body = body.Replace("{Customer Number}", _settings.CustomerNumber);
-            body = body.Replace("{MasterSiteId}", _action.MasterSiteId);
-            body = body.Replace("{Bandwidth}", _action.Bandwidth);
+            body = reader.ReadToEnd().
+                            Replace("{Customer Number}", _settings.CustomerNumber).
+                            Replace("{MasterSiteId}", _action.MasterSiteId).
+                            Replace("{Bandwidth}", _action.Bandwidth);
 
-            // this is a real hack. In the case of a Data Center connection, we need to insert a new element to the Json for PartnerId
+            // In the case of a Data Center connection, a "partnerId" value is required;
+            // In the case of a UNI connection, a "serviceId" value is required.
             if (!string.IsNullOrWhiteSpace(_action.PartnerId))
             {
-                body = body.Replace("\"NaaS ExternalApi\",", $"\"NaaS ExternalApi\",\n    \"PartnerId\": \"{_action.PartnerId}\",");
+                body = body.Replace("serviceId", "partnerId").Replace("{PortIdOrPartnerId}", _action.PartnerId);
+            }
+            else
+            {
+                body = body.Replace("{PortIdOrPartnerId}", _action.PortId);
             }
         }                
 

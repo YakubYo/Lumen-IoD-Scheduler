@@ -4,5 +4,6 @@
     "currencyCode": "USD",
     "masterSiteId": "{MasterSiteId}",
     "productCode": "718",
-    "speed": "{Bandwidth}"
+    "speed": "{Bandwidth}",
+    "serviceId": "{PortIdOrPartnerId}"
 }

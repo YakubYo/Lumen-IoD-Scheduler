@@ -9,6 +9,7 @@ public class BandwidthAction
     public string? AccountName { get; set; }
     public string? MasterSiteId { get; set; }
     public string? PartnerId { get; set; }
+    public string? PortId { get; set; }
     public string? Status { get; set; }
 
 }
